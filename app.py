@@ -60,6 +60,10 @@ def Text_To_Speek():
         voice_id = fr_voice_id
     elif lang == "jap":
         voice_id = jap_voice_id
+    elif lang == "es":
+        voice_id = es_voice_id
+    elif lang == "zh":
+        voice_id == zh_voice_id
     else :
         voice_id = en_voice_id
 
