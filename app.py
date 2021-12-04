@@ -54,6 +54,8 @@ def Text_To_Speek():
     es_voice_id = "spanish"
     # Mandarin
     zh_voice_id = "Mandarin"
+    # Russian
+    ru_voice_id = "russian"
     
     # implement switch case for the variable lang
     if lang == "fr":
@@ -64,6 +66,8 @@ def Text_To_Speek():
         voice_id = es_voice_id
     elif lang == "zh":
         voice_id == zh_voice_id
+    elif lang == "ru":
+        voice_id = ru_voice_id
     else :
         voice_id = en_voice_id
 
