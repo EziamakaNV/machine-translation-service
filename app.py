@@ -40,10 +40,10 @@ def get_prediction():
     return jsonify({"output": translation})
 
 
-@app.route('/mlservice/voice')
+@app.route('/mlservice/voice', methods=["POST"])
 def Text_To_Speek():
-    lang = request.args['lang']
-    text = request.args['text']
+    lang = request.json['lang']
+    text = request.json['text']
     voice_id = ""
 
     # Voice IDs pulled from engine.getProperty('voices')
