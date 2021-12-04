@@ -8,7 +8,7 @@ import time
 app = Flask(__name__)
 translator = Translator(MODEL_PATH)
 
-app.config["DEBUG"] = True  # turn off in prod
+app.config["DEBUG"] = False  # turn off in prod
 
 
 @app.route('/', methods=["GET"])
