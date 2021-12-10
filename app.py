@@ -10,6 +10,15 @@ translator = Translator(MODEL_PATH)
 
 app.config["DEBUG"] = False  # turn off in prod
 
+# allow cross origin requests
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    return response
+    
+
 
 @app.route('/', methods=["GET"])
 def health_check():
@@ -47,9 +56,9 @@ def Text_To_Speek():
     voice_id = ""
 
     # Voice IDs pulled from engine.getProperty('voices')
-    en_voice_id = "english"
-    fr_voice_id = "french"
-    jap_voice_id = ""
+    en_voice_id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_EN-US_ZIRA_11.0"
+    fr_voice_id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_FR-FR_HORTENSE_11.0"
+    jap_voice_id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_JA-JP_HARUKA_11.0"
     # spanish
     es_voice_id = "spanish"
     # Mandarin
@@ -118,6 +127,11 @@ def Text_To_Speek():
 @app.route('/mlservice/audio/<path:path>')
 def send_audio(path):
     return send_file(os.path.join(AUDIO_PATH, path), mimetype='audio/mp3')
+
+# respond to request for /latency with ok
+@app.route('/latency', methods=["GET"])
+def latency():
+    return "ok"
 
 
 app.run(host="0.0.0.0")
