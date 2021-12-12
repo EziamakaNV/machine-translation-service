@@ -69,8 +69,6 @@ def Text_To_Speek():
     # implement switch case for the variable lang
     if lang == "fr":
         voice_id = fr_voice_id
-    elif lang == "jap":
-        voice_id = jap_voice_id
     elif lang == "es":
         voice_id = es_voice_id
     elif lang == "zh":
@@ -85,7 +83,7 @@ def Text_To_Speek():
     engine = pyttsx3.init()
 
     # Set a new voice rate
-    engine.setProperty('rate', 200)
+    engine.setProperty('rate', 100)
 
     # Set the new voice volume. The minimum volume is 0 and the maximum volume is 1
     engine.setProperty('volume', 1.0)
